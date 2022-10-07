@@ -2,7 +2,7 @@
 #
 # From https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 #
-# https://hub.docker.com/r/jrottenberg/ffmpeg/
+# 
 #
 #
 FROM        ubuntu:20.04 AS base
@@ -595,8 +595,8 @@ RUN \
         done
 
 FROM        base AS release
-LABEL       org.opencontainers.image.authors="julien@rottenberg.info" \
-            org.opencontainers.image.source=https://github.com/jrottenberg/ffmpeg
+LABEL       based_on_org.opencontainers.image.authors="julien@rottenberg.info" \
+            based_on_org.opencontainers.image.source=https://github.com/jrottenberg/ffmpeg
 
 ENV         LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
 
