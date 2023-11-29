@@ -1,21 +1,17 @@
 # ffmpeg - http://ffmpeg.org/download.html
-#
 # From https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
-#
-# 
-#
-#
+
 FROM        ubuntu:20.04 AS base
 
 WORKDIR     /tmp/workdir
-COPY Blackmagic_DeckLink_SDK_12.4/Linux/include /root/ffmpeg_sources/BMD_SDK/
-COPY Blackmagic_Desktop_Video_Linux_12.4/deb/x86_64/desktopvideo_12.4a4_amd64.deb /root/BMD/
+COPY BMD_SDK/Linux/include /root/ffmpeg_sources/BMD_SDK/
+COPY BMD_DesktopVideo/deb/x86_64/desktopvideo_*_amd64.deb /root/BMD/
 RUN     apt-get -yqq update && \
         apt-get install -yq \
                 libgl1 \
                 dkms \
                 linux-headers-$(uname -r) && \
-        dpkg -i /root/BMD/desktopvideo_12.4a4_amd64.deb && \
+        dpkg -i /root/BMD/*.deb && \
         apt-get install -f && \
         rm -r /root/BMD/
 RUN     apt-get -yqq update && \
