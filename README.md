@@ -12,14 +12,15 @@ Download those files and unzip them into the same director as the `dockerfile`. 
 ## How to use it?
 The BMD driver has to be installed at the host. Copy the Dockerfile and unpack it to the same directory as the folders outlined above then type e.g
 ```bash
- docker build -t ffmpeg-decklink:5.1-ubuntu2004 .
+docker build -t ffmpeg-decklink:latest .
 ```
 To run the container and go inside you can type e.g:
 ```bash
- docker run -it --entrypoint='bash' --device=/dev/blackmagic ffmpeg-decklink:5.1-ubuntu2004
+docker run -it --entrypoint='bash' --device=/dev/blackmagic ffmpeg-decklink:latest
 ```
 
 ## Available Formats
+You can get the formats for your card using: `ffmpeg -f decklink -list_formats 1 -i '{card_name}'`
 ```
 Supported formats for 'DeckLink Mini Recorder 4K':
 format_code	description

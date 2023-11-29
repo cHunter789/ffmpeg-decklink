@@ -13,4 +13,4 @@ PORT='hdmi'
 
 ffprobe -f decklink -i '$DEVICE' -select_streams v:0 -video_input $PORT -audio_input embedded
 
-ffmpeg -y -format_code $FORMAT -f decklink -video_input $PORT -audio_input embedded -raw_format argb -i '$DEVICE' -c:v libx264 -b:v 2000k /mnt/network_storage/out.mp4
+ffmpeg -y -format_code $FORMAT -f decklink -video_input $PORT -audio_input embedded -raw_format argb -i '$DEVICE' -c:v libx264 -b:v 2000k /media/out.mp4
