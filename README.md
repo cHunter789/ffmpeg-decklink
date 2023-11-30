@@ -7,20 +7,40 @@ You'll need to download 2 files from Blackmagic's support page before building t
 1. [Desktop Video](https://www.blackmagicdesign.com/support/family/capture-and-playback)
 2. [Desktop Video SDK](https://www.blackmagicdesign.com/support/family/capture-and-playback)
 
-Download those files and unzip them into the same director as the `dockerfile`. Unzip the SDK into a folder titled `BMD_SDK` and unzip the Desktop Video tar ball into a folder called `BMD_DesktopVideo`. That's what the docker file references.
+Download those files and unzip them into the same director as the `Dockerfile`. Unzip the SDK into a folder titled `BMD_SDK` and unzip the Desktop Video tar ball into a folder called `BMD_DesktopVideo`. That's what the docker file references.
 
-## How to use it?
-The BMD driver has to be installed at the host. Copy the Dockerfile and unpack it to the same directory as the folders outlined above then type e.g
-```bash
-docker build -t ffmpeg-decklink:latest .
+## Building the Dockerfile
+1. Install Docker
+2. Download the Desktop Video and SDK files (see above)
+3. Unzip the files into the same directory as the Dockerfile. The folder names should be `BMD_SDK` and `BMD_DesktopVideo`
+4. Build the docker file with `docker build -t ffmpeg-decklink:latest .`
+
+## Running the Container and Interacting with the Decklink Card
+Start the container using the command:
 ```
-To run the container and go inside you can type e.g:
-```bash
 docker run -it --entrypoint='bash' --device=/dev/blackmagic ffmpeg-decklink:latest
 ```
 
+## Scripts
+There are a few scripts located in the `/utils` directory that help with interacting with the decklink card.
+
+### sources.sh
+This script will list the available Blackmagic Capture Cards in the container.
+
+### get_formats.sh
+You can use this to determine the format you want to use for your input. An example of its output is below in the [Available Formats](#available-formats) section.
+
+### probe.sh
+This script allows you to probe the input of the decklink card. You can use it to determine the format of the input.
+
+### record.sh
+This script will record the input of the decklink card to a file. You can use it to test the input of the card. You can use the `utils/get_formats.sh` script to determine the format you want to use for your input.
+
+### rtmp.sh
+This script will stream the input of the decklink card to an RTMP server. You can use it to test the input of the card. You can use the `utils/get_formats.sh` script to determine the format you want to use for your input.
+
 ## Available Formats
-You can get the formats for your card using: `ffmpeg -f decklink -list_formats 1 -i '{card_name}'`
+You can get the formats for your card using: `utils/get_formats.sh`
 ```
 Supported formats for 'DeckLink Mini Recorder 4K':
 format_code	description

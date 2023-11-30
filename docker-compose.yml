@@ -1,3 +1,5 @@
+# still in the works
+
 services:
   ffmpeg-decklink:
     image: ffmpeg-decklink:latest
@@ -6,8 +8,8 @@ services:
       - /dev/blackmagic
     volumes:
       - /mnt/raid1/network_storage:/media
-    environment:
-      - DEVICE='DeckLink Mini Recorder 4K'
-      - FORMAT='Hp59'
-      - PORT='hdmi'
+    # environment:
+    #   - DEVICE='DeckLink Mini Recorder 4K'
+    #   - FORMAT='Hp59'
+    #   - INPUT_TYPE='hdmi'
     restart: unless-stopped

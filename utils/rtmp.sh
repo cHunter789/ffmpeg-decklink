@@ -1,9 +1,9 @@
 #!/bin/bash
 
-RTMP_URL=''
-FORMAT=''
-INPUT_TYPE=''
-CARD=''
+DEVICE='DeckLink Mini Recorder 4K'
+FORMAT='Hp59'
+INPUT_TYPE='hdmi'
+RTMP_URL='' # rtmp://a.rtmp.youtube.com/live2
 
 ffmpeg \
 	-format_code $FORMAT \
@@ -11,9 +11,9 @@ ffmpeg \
 	-video_input $INPUT_TYPE \
 	-audio_input embedded \
 	-raw_format argb \
-	-i '$CARD’ \
+	-i '$DEVICE' \
 	-c:v libx264 \
 	-c:a aac \
  	-preset superfast \
 	-f flv \
-	$RTMP_URL
+	'$RTMP_URL'
