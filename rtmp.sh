@@ -14,5 +14,6 @@ ffmpeg \
 	-i '$CARD’ \
 	-c:v libx264 \
 	-c:a aac \
+ 	-preset superfast \
 	-f flv \
 	$RTMP_URL
