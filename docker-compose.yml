@@ -7,7 +7,7 @@ services:
     devices:
       - /dev/blackmagic
     volumes:
-      - /mnt/raid1/network_storage:/media
+      - /mnt/raid1/network_storage/:/media/
     # environment:
     #   - DEVICE='DeckLink Mini Recorder 4K'
     #   - FORMAT='Hp59'
