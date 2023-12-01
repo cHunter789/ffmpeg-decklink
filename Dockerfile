@@ -9,9 +9,9 @@ COPY BMD_DesktopVideo/deb/x86_64/desktopvideo_*_amd64.deb /root/BMD/
 COPY ./utils/* /tmp/workdir/utils/
 RUN     apt-get -yqq update && \
         apt-get install -yq \
-                libgl1 \
-                dkms \
-                linux-headers-$(uname -r) && \
+        libgl1 \
+        dkms \
+        linux-headers-$(uname -r) && \
         dpkg -i /root/BMD/*.deb && \
         apt-get install -f && \
         rm -r /root/BMD/
@@ -589,7 +589,7 @@ RUN \
         cp -r ${PREFIX}/include/libav* ${PREFIX}/include/libpostproc ${PREFIX}/include/libsw* /usr/local/include && \
         mkdir -p /usr/local/lib/pkgconfig && \
         for pc in ${PREFIX}/lib/pkgconfig/libav*.pc ${PREFIX}/lib/pkgconfig/libpostproc.pc ${PREFIX}/lib/pkgconfig/libsw*.pc; do \
-          sed "s:${PREFIX}:/usr/local:g" <"$pc" >/usr/local/lib/pkgconfig/"${pc##*/}"; \
+        sed "s:${PREFIX}:/usr/local:g" <"$pc" >/usr/local/lib/pkgconfig/"${pc##*/}"; \
         done
 
 FROM    base AS release
@@ -603,8 +603,6 @@ CMD     ["--help"]
 ENTRYPOINT  ["ffmpeg"]
 
 COPY --from=build /usr/local /usr/local/
-
-RUN '/tmp/workdir/record.sh'
 
 # Let's make sure the app built correctly
 # Convenient to verify on https://hub.docker.com/r/jrottenberg/ffmpeg/builds/ console output
