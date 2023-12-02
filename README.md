@@ -31,6 +31,7 @@ There's two ways of interacting with the image. You can either run it using the 
 - `FORMAT` - The ingest video format you're being sent into the capture card. You can find out what the code is below or by running `./scripts/format.sh`
 - `INPUT_TYPE` - Which input you're using. That's either `hdmi` or `sdi`
 - `OUTPUT` - Where you want to save. If you have the `/media` volume mapped to your host machine, save it there. For example `/media/output.mp4`
+- `DURATION` - Optional: how long you want to record for in seconds.
 - `RTMP_URL` - The full url including stream key for where you want to send the ingested video.
 
 ## Examples
@@ -43,6 +44,7 @@ docker run -it --entrypoint='bash' \
   -e DEVICE="DeckLink Mini Recorder 4K" \
   -e FORMAT=hp60 \
   -e INPUT_TYPE=hdmi \
+  -e DURATION=7200 # OPTIONAL: how long you want to record for in seconds
   -e OUTPUT=/media/output.mp4 \
   -c ./scripts/record.sh \
   michaelgillett/ffmpeg-decklink:latest
@@ -62,6 +64,7 @@ services:
       - FORMAT=Hp59 # find out what format you're using with probe.sh
       - INPUT_TYPE=hdmi # either hdmi or sdi, depending on your model
       - OUTPUT=/media/out.mp4 # for use with record.sh
+      - DURATION=7200 # OPTIONAL: how long you want to record for
       - RTMP_URL=rtmp://192.168.1.1/example/here?key=key # for use with rtmp.sh
     command: ["./scripts/rtmp.sh"]
     restart: unless-stopped
