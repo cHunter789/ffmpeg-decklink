@@ -2,8 +2,8 @@
 
 # returns what type of video the capture card is receiving
 
-DEVICE="DeckLink Mini Recorder 4K"
-INPUT_TYPE="hdmi"
+# DEVICE="DeckLink Mini Recorder 4K"
+# INPUT_TYPE="hdmi"
 
 ffprobe \
     -f decklink \

@@ -2,10 +2,10 @@
 
 # records video from capture card
 
-DEVICE="DeckLink Mini Recorder 4K"
-FORMAT="Hp59"
-INPUT_TYPE="hdmi"
-OUTPUT="/media/out.mp4"
+# DEVICE="DeckLink Mini Recorder 4K"
+# FORMAT="Hp59"
+# INPUT_TYPE="hdmi"
+# OUTPUT="/media/out.mp4"
 
 ffmpeg -y \
     -format_code $FORMAT \

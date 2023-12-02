@@ -5,11 +5,14 @@ services:
     image: ffmpeg-decklink:latest
     container_name: ffmpeg-decklink
     devices:
-      - /dev/blackmagic
+      - /dev/blackmagic:/dev/blackmagic
     volumes:
       - /mnt/raid1/network_storage/:/media/
-    # environment:
-    #   - DEVICE='DeckLink Mini Recorder 4K'
-    #   - FORMAT='Hp59'
-    #   - INPUT_TYPE='hdmi'
+    environment:
+      - DEVICE="DeckLink Mini Recorder 4K"
+      - FORMAT="Hp59"
+      - INPUT_TYPE="hdmi"
+      - OUTPUT="/media/out.mp4"
+      - RTMP_URL=""
+    command: ["./scripts/rtmp.sh"]
     restart: unless-stopped

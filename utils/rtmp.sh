@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DEVICE="DeckLink Mini Recorder 4K"
-FORMAT="hp60"
-INPUT_TYPE="hdmi"
-RTMP_URL=""
+# DEVICE="DeckLink Mini Recorder 4K"
+# FORMAT="hp60"
+# INPUT_TYPE="hdmi"
+# RTMP_URL=""
 
 ffmpeg \
         -format_code $FORMAT \
