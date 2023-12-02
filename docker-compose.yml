@@ -9,10 +9,10 @@ services:
     volumes:
       - /mnt/raid1/network_storage/:/media/
     environment:
-      - DEVICE="DeckLink Mini Recorder 4K"
-      - FORMAT="Hp59"
-      - INPUT_TYPE="hdmi"
-      - OUTPUT="/media/out.mp4"
-      - RTMP_URL=""
+      - DEVICE=DeckLink Mini Recorder 4K # name of the card
+      - FORMAT=Hp59 # find out what format you're using with probe.sh
+      - INPUT_TYPE=hdmi # either hdmi or sdi, depending on your model
+      - OUTPUT=/media/out.mp4 # for use with record.sh
+      - RTMP_URL=rtmp://192.168.1.1/example/here?key=key # for use with rtmp.sh
     command: ["./scripts/rtmp.sh"]
     restart: unless-stopped
