@@ -2,7 +2,7 @@
 
 services:
   ffmpeg-decklink:
-    image: ffmpeg-decklink:latest
+    image: michaelgillett/ffmpeg-decklink:latest
     container_name: ffmpeg-decklink
     devices:
       - /dev/blackmagic:/dev/blackmagic
