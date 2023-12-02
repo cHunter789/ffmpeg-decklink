@@ -1,12 +1,16 @@
 # ffmpeg - http://ffmpeg.org/download.html
 # From https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 
-FROM        ubuntu:20.04 AS base
+FROM    ubuntu:20.04 AS base
 
-WORKDIR     /tmp/workdir
-COPY BMD_SDK/Linux/include /root/ffmpeg_sources/BMD_SDK/
-COPY BMD_DesktopVideo/deb/x86_64/desktopvideo_*_amd64.deb /root/BMD/
-COPY ./utils/* /tmp/workdir/scripts/
+WORKDIR /tmp/workdir
+
+COPY    BMD_SDK/Linux/include /root/ffmpeg_sources/BMD_SDK/
+COPY    BMD_DesktopVideo/deb/x86_64/desktopvideo_*_amd64.deb /root/BMD/
+
+COPY    ./utils/* /tmp/workdir/scripts/
+RUN     chmod +x /tmp/workdir/scripts/*
+
 RUN     apt-get -yqq update && \
         apt-get install -yq \
         libgl1 \
@@ -599,8 +603,8 @@ FROM    base AS release
 
 ENV     LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
 
-CMD     ["--help"]
-ENTRYPOINT  ["ffmpeg"]
+# CMD     ["--help"]
+# ENTRYPOINT  ["ffmpeg"]
 
 COPY --from=build /usr/local /usr/local/
 
