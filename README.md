@@ -37,7 +37,15 @@ There's two ways of interacting with the image. You can either run it using the 
 
 ### Docker CLI
 ```
-docker run -it --entrypoint='bash' --device=/dev/blackmagic -v /mnt/media/:/media/ michaelgillett/ffmpeg-decklink:latest
+docker run -it --entrypoint='bash' \
+  --device=/dev/blackmagic \
+  -v /mnt/media:/media \
+  -e DEVICE="DeckLink Mini Recorder 4K" \
+  -e FORMAT=hp60 \
+  -e INPUT_TYPE=hdmi \
+  -e OUTPUT=/media/output.mp4 \
+  -c ./scripts/record.sh \
+  michaelgillett/ffmpeg-decklink:latest
 ```
 ### Docker Compose
 ```
