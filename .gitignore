@@ -1,3 +1,6 @@
 venv
 BMD_DesktopVideo
 BMD_SDK
+*.log
+__pycache__
+app

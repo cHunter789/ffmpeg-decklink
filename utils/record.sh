@@ -5,7 +5,8 @@
 # DEVICE="DeckLink Mini Recorder 4K"
 # FORMAT="Hp59"
 # INPUT_TYPE="hdmi"
-# OUTPUT="/media/out.mp4"
+# RECORD_DIRECTORY="/media"
+# FILENAME="out.mp4"
 
 DURATION="${DURATION:=0}"
 
@@ -15,7 +16,7 @@ if [ "$DURATION" != 0 ]; then
     COMMAND="${COMMAND} -t $DURATION"
 fi
 
-COMMAND="$COMMAND -c:v libx264 -c:a aac $OUTPUT"
+COMMAND='$COMMAND -c:v libx264 -c:a aac "${RECORD_DIRECTORY}/{FILENAME}'
 
 echo "Running ffmpeg command: $COMMAND"
 eval "$COMMAND"

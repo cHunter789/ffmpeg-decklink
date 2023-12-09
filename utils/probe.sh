@@ -10,4 +10,6 @@ ffprobe \
     -i "${DEVICE}" \
     -select_streams v:0 \
     -video_input $INPUT_TYPE \
-    -audio_input embedded
+    -audio_input embedded \
+    -print_format json \
+    -show_format -show_streams

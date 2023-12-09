@@ -12,7 +12,8 @@ services:
       - DEVICE=DeckLink Mini Recorder 4K # name of the card
       - FORMAT=Hp59 # find out what format you're using with probe.sh
       - INPUT_TYPE=hdmi # either hdmi or sdi, depending on your model
-      - OUTPUT=/media/out.mp4 # for use with record.sh
+      - RECORD_DIRECTORY=/media # where to save the files on your device. No trailing / required.
+      - FILENAME=out.mp4 # for use with record.sh. appends to RECORD_DIRECTORY
       - RTMP_URL=rtmp://192.168.1.1/example/here?key=key # for use with rtmp.sh
     command: ["./scripts/rtmp.sh"]
     restart: unless-stopped
