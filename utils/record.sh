@@ -10,7 +10,7 @@
 
 DURATION="${DURATION:=0}"
 
-COMMAND='ffmpeg -y -format_code $FORMAT -f decklink -video_input $INPUT_TYPE -audio_input embedded -raw_format argb -i "${DEVICE}"'
+COMMAND='ffmpeg -hide_banner -loglevel panic -y -format_code $FORMAT -f decklink -video_input $INPUT_TYPE -audio_input embedded -raw_format argb -i "${DEVICE}"'
 
 if [ "$DURATION" != 0 ]; then
     COMMAND="${COMMAND} -t $DURATION"

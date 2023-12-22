@@ -6,10 +6,11 @@
 # INPUT_TYPE="hdmi"
 
 ffprobe \
+    -hide_banner -loglevel panic \
     -f decklink \
     -i "${DEVICE}" \
     -select_streams v:0 \
     -video_input $INPUT_TYPE \
     -audio_input embedded \
     -print_format json \
-    -show_format -show_streams
+    -show_streams

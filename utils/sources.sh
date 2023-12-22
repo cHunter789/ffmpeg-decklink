@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # get decklink sources
-ffmpeg -sources decklink
+ffmpeg -hide_banner -loglevel panic -sources decklink
