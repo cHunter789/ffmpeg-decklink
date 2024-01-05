@@ -1,16 +1,16 @@
 #!/bin/bash
 
+### DESCRIPTION ###
 # records video from capture card
-
 # run this script by doing `./record.sh {RECORDING_NAME} {record_duration_minutes: integer}`
 # for example:
     # ./record.sh tape_01 120
 
-# DEFAULT VALUES
+### DEFAULT VALUES ###
 RECORDING_NAME="recording"
 DURATION=0
 
-# ENVIRONMENT VARIABLE CHECKS
+### ENVIRONMENT VARIABLE CHECKS ###
 if [[ -v DEVICE ]]; then
   echo "Recording capture device: $DEVICE"
 else
@@ -25,13 +25,13 @@ else
   exit 1
 fi
 
-# ARGUMENT CHECKS
+### ARGUMENT CHECKS ###
 if [ "$#" -ge 1 ]; then
   RECORDING_NAME="$1"
 fi
 
 if [ "$#" -ge 2 ]; then
-  DURATION=$2*60
+  DURATION=$2
   echo "Record duration set to ${DURATION} minutes"
 fi
 
@@ -64,13 +64,14 @@ COMMAND="ffmpeg -hide_banner -y \
 -i \"${DEVICE}\""
 
 if [ "$DURATION" != 0 ]; then
+    DURATION = DURATION * 60 # convert minutes to seconds
     COMMAND="${COMMAND} -t $DURATION"
 fi
 
 TIMESTAMP=$(date +"%Y-%m-%d_%H%M%S")
 RECORD_PATH="/media/${TIMESTAMP}_${RECORDING_NAME}.mkv"
 
-echo "Recording to: $RECORD_PATH"
+echo "Recording destination set to: $RECORD_PATH"
 
 COMMAND="${COMMAND} \
 -c:v libx264 \
