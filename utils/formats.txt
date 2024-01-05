@@ -1,0 +1,30 @@
+format_code     description
+ntsc            720x486 at 30000/1001 fps (interlaced, lower field first)
+pal             720x576 at 25000/1000 fps (interlaced, upper field first)
+23ps            1920x1080 at 24000/1001 fps
+24ps            1920x1080 at 24000/1000 fps
+Hp25            1920x1080 at 25000/1000 fps
+Hp29            1920x1080 at 30000/1001 fps
+Hp30            1920x1080 at 30000/1000 fps
+Hp50            1920x1080 at 50000/1000 fps
+Hp59            1920x1080 at 60000/1001 fps
+Hp60            1920x1080 at 60000/1000 fps
+Hi50            1920x1080 at 25000/1000 fps (interlaced, upper field first)
+Hi59            1920x1080 at 30000/1001 fps (interlaced, upper field first)
+Hi60            1920x1080 at 30000/1000 fps (interlaced, upper field first)
+hp50            1280x720 at 50000/1000 fps
+hp59            1280x720 at 60000/1001 fps
+hp60            1280x720 at 60000/1000 fps
+2d23            2048x1080 at 24000/1001 fps
+2d24            2048x1080 at 24000/1000 fps
+2d25            2048x1080 at 25000/1000 fps
+4k23            3840x2160 at 24000/1001 fps
+4k24            3840x2160 at 24000/1000 fps
+4k25            3840x2160 at 25000/1000 fps
+4k29            3840x2160 at 30000/1001 fps
+4k30            3840x2160 at 30000/1000 fps
+4d23            4096x2160 at 24000/1001 fps
+4d24            4096x2160 at 24000/1000 fps
+4d25            4096x2160 at 25000/1000 fps
+4d29            4096x2160 at 30000/1001 fps
+4d30            4096x2160 at 30000/1000 fps

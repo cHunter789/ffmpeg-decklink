@@ -1,3 +1,5 @@
 venv
 BMD_DesktopVideo
 BMD_SDK
+*.zip
+*.tar
